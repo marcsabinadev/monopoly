@@ -1,0 +1,35 @@
+<!-- @authors Julia Prieto, Marc Sabina, Alejandra Paz, Angel Rivera
+Estructura HTML,
+Tabla con los datos de las cartas existentes en la base de datos -->
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="display-4 bi bi-wallet-fill"> Cartas Cofre de Comunidad</h2>
+      <hr>
+    </div>
+  </div>
+  <a type="submit" class="btn btn-success btn-sm" routerLink="/crearCarta" *ngIf="isAdmin()">Añadir Carta</a>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Tipo de carta</th>
+        <th>Definición</th>
+        <th *ngIf="isAdmin()">Editar</th>
+        <th *ngIf="isAdmin()">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cartaCofre of cartasCofre">
+        <td>{{cartaCofre.tipoCarta}}</td>
+        <td>{{cartaCofre.definicion}}</td>
+        <td>
+          <button type="submit" class="btn btn-info btn-sm" *ngIf="isAdmin()" [routerLink]="['/actualizarCarta', cartaCofre.id]">Editar</button>
+        </td>
+        <td>
+          <button type="submit" class="btn btn-danger btn-sm" *ngIf="isAdmin()" (click)="eliminarCarta(cartaCofre.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

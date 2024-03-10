@@ -1,0 +1,69 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="display-4 bi bi-file-plus-fill">Crear Carta Especial</h2>
+      <hr>
+    </div>
+  </div>
+  <form [formGroup]="crearCarta" (ngSubmit)="submit()">
+
+    <!-- Campo tipo carta -->
+    <div class="form-group">
+      <legend class="mt-4">Tipo de carta * :</legend>
+      <select class="form-select" formControlName="tipoCarta">
+        <option [value]="item" *ngFor="let item of tipos">
+          {{item}}
+        </option>
+      </select>
+
+      <!-- Mostrar mensaje de error si es necesario -->
+      <small class="form-text text-muted bi bi-info-circle"
+        *ngIf="crearCarta.get('tipoCarta')?.errors?.['required'] && crearCarta.get('tipoCarta')?.touched">
+         Campo obligatorio.
+      </small>
+    </div>
+
+    <!-- Campo definición -->
+    <div class="form-group">
+      <legend class="mt-4">Definición* :</legend>
+      <input type="textarea" class="form-control" formControlName="definicion">
+
+      <small class="form-text text-muted bi bi-info-circle"
+        *ngIf="crearCarta.get('definicion')?.errors?.['required'] && crearCarta.get('definicion')?.touched">
+         Campo obligatorio.
+      </small>
+
+      <small class="form-text text-muted bi bi-info-circle"
+        *ngIf="crearCarta.get('definicion')?.errors?.['minlength'] && crearCarta.get('definicion')?.touched">
+         Debe haber un mínimo de 10 caracteres.
+      </small>
+
+    </div>
+
+    <div>
+      <legend class="mt-4">Casillas* :</legend>
+      <select class="form-select" formControlName="casilla_id">
+        <option *ngFor="let casilla of casillas" [value]="casilla">{{casilla}}</option>
+      </select>
+
+      <small class="form-text text-muted bi bi-info-circle"
+        *ngIf="crearCarta.get('casilla_id')?.errors?.['required'] && crearCarta.get('casilla_id')?.touched">
+         Campo obligatorio.
+      </small>
+    </div>
+    <br>
+    <!-- Mostrar el mensaje de éxito -->
+    <div class="alert alert-success bi bi-check-lg" *ngIf="mostrarMensaje">
+       Carta añadida correctamente
+    </div>
+
+    <br>
+
+    <button type="submit" class="btn btn-primary" [disabled]="crearCarta.invalid">
+      Añadir Carta
+    </button>&nbsp;
+
+    <button type="submit" class="btn btn-danger" routerLink="/cartasEspeciales">Cancelar</button>
+
+  </form>
+</div>

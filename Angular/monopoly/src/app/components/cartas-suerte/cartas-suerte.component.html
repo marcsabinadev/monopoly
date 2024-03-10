@@ -1,0 +1,37 @@
+<!-- @authors Julia Prieto, Marc Sabina, Alejandra Paz, Angel Rivera
+Estructura HTML,
+Tabla con los datos de las cartas existentes en la base de datos -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="display-4 bi bi-question-lg"> Cartas Suerte</h2>
+      <hr>
+    </div>
+  </div>
+  <a type="submit" class="btn btn-success btn-sm" routerLink="/crearCarta" *ngIf="isAdmin()">Añadir Carta</a>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Tipo de carta</th>
+        <th>Definición</th>
+        <th *ngIf="isAdmin()">Editar</th>
+        <th *ngIf="isAdmin()">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cartaSuerte of cartasSuerte">
+        <td>{{cartaSuerte.tipoCarta}}</td>
+        <td>{{cartaSuerte.definicion}}</td>
+        <td>
+          <button type="submit" class="btn btn-info btn-sm" *ngIf="isAdmin()"
+            [routerLink]="['/actualizarCarta', cartaSuerte.id]">Editar</button>
+        </td>
+        <td>
+          <button type="submit" class="btn btn-danger btn-sm" *ngIf="isAdmin()"
+            (click)="eliminarCartaSuerte(cartaSuerte.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

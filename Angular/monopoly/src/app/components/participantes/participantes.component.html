@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="display-4 bi bi-people-fill"> Participantes</h2>
+      <hr>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-success btn-sm" *ngIf="isAdmin()" routerLink="/crearParticipantes">Añadir
+    participante</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre participante</th>
+        <th *ngIf="isAdmin()">Editar</th>
+        <th *ngIf="isAdmin()">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let participante of participantes">
+        <td>{{participante.nomUsuario}}</td>
+        <td>
+          <button type="submit" class="btn btn-info btn-sm" *ngIf="isAdmin()"
+            [routerLink]="['/actualizarParticipante', participante.id]">Editar</button>
+        </td>
+        <td>
+          <button type="submit" class="btn btn-danger btn-sm" *ngIf="isAdmin()"
+            (click)="eliminarParticipante(participante.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

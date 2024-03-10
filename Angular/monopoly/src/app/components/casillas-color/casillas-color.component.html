@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="display-4 bi bi-bookmarks-fill"> Casillas</h2>
+      <hr>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Imagen</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let casilla of casillas; let i = index">
+      <tr>
+        <td><a [routerLink]="['/casillaDetalles' , casilla.id]">{{ casilla.nombre }}</a></td>
+        <td>
+          <img [src]="getImageUrl(casilla.color, 0 + 1)" alt="{{ casilla.nombre }}">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,137 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">Register</div>
+
+        <div class="card-body">
+          <form [formGroup]="RegistroForm" (ngSubmit)="onSubmit()">
+
+            <!--Campo nombre usuario-->
+            <div class="form-group row mb-3">
+              <label for="name" class="col-md-4 col-form-label text-md-right">Nombre de usuario</label>
+              <div class="col-md-6">
+                <input id="name" type="text" class="form-control" formControlName="name" autofocus>
+
+                <!--Mensajes de error -->
+                <small class="form-text text-muted bi bi-info-circle"
+                  *ngIf="RegistroForm.get('name')?.errors?.['required'] && RegistroForm.get('name')?.touched">
+                  Campo obligatorio.
+                </small>
+
+                <small class="form-text text-muted bi bi-info-circle"
+                  *ngIf="RegistroForm.get('name')?.errors?.['maxlength'] && RegistroForm.get('name')?.touched">
+                  Debe haber un máximo de 50 caracteres.
+                </small>
+              </div>
+            </div>
+            <!----------------------------------------------------------------------------------------------->
+
+            <!--Campo edad-->
+            <div class="form-group row mb-3">
+              <label for="age" class="col-md-4 col-form-label text-md-right">Edad</label>
+
+              <div class="col-md-6">
+                <input id="age" type="number" class="form-control" formControlName="age">
+                <!--Mensajes de error -->
+                <small class="form-text text-muted bi bi-info-circle"
+                  *ngIf="RegistroForm.get('age')?.errors?.['required'] && RegistroForm.get('age')?.touched">
+                  Campo obligatorio.
+                </small>
+
+
+                <small class="form-text text-muted bi bi-info-circle"
+                  *ngIf="RegistroForm.get('age')?.errors?.['min'] && RegistroForm.get('age')?.touched">
+                  Edad mínima de registro: 6
+                </small>
+              </div>
+            </div>
+            <!----------------------------------------------------------------------------------------------->
+
+            <!--Campo correo electrónico-->
+            <div class="form-group row mb-3">
+              <label for="email" class="col-md-4 col -form-label text-md-right">Correo electrónico</label>
+
+              <div class="col-md-6">
+                <input id="email" type="email" class="form-control" formControlName="email">
+
+                <!--Mensajes de error -->
+                <small class="form-text text-muted bi bi-info-circle"
+                  *ngIf="RegistroForm.get('email')?.errors?.['required'] && RegistroForm.get('email')?.touched">
+                  Campo obligatorio.
+                </small>
+
+                <small class="form-text text-muted bi bi-info-circle"
+                  *ngIf="RegistroForm.get('email')?.errors?.['pattern'] && RegistroForm.get('email')?.touched">
+                  El formato del correo electrónico no es válido.
+                </small>
+
+                <small class="form-text text-muted bi bi-info-circle"
+                  *ngIf="RegistroForm.get('email')?.errors?.['maxlength'] && RegistroForm.get('email')?.touched">
+                  Debe haber un máximo de 150 caracteres.
+                </small>
+              </div>
+            </div>
+            <!----------------------------------------------------------------------------------------------->
+
+            <!--Campo contraseña-->
+            <div class="form-group row mb-3">
+              <label for="password" class="col-md-4 col-form-label text-md-right">Contraseña</label>
+
+              <div class="col-md-6">
+                <input id="password" type="password" class="form-control" formControlName="password">
+
+                <!--Mensajes de error -->
+                <small class="form-text text-muted bi bi-info-circle"
+                  *ngIf="RegistroForm.get('password')?.errors?.['required'] && RegistroForm.get('password')?.touched">
+                  Campo obligatorio.
+                </small>
+
+                <small class="form-text text-muted bi bi-info-circle"
+                  *ngIf="RegistroForm.get('password')?.errors?.['minlength'] && RegistroForm.get('password')?.touched">
+                  Debe haber un mínimo de 6 caracteres.
+                </small>
+
+              </div>
+            </div>
+            <!----------------------------------------------------------------------------------------------->
+
+            <!--Campo confirmar contraseña-->
+            <div class="form-group row mb-3">
+              <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Repetir contraseña</label>
+              <div class="col-md-6">
+                <input id="password-confirm" type="password" class="form-control" formControlName="passwordConfirmation"
+                  appRepeatPassword=password>
+
+                <!--Mensajes de error -->
+                <small class="form-text text-muted bi bi-info-circle"
+                  *ngIf="RegistroForm.get('passwordConfirmation')?.errors?.['required'] && RegistroForm.get('passwordConfirmation')?.touched">
+                  Campo obligatorio.
+                </small>
+
+                <small class="form-text text-muted bi bi-info-circle"
+                  *ngIf="RegistroForm.get('passwordConfirmation')?.errors?.['custom'] && RegistroForm.get('passwordConfirmation')?.touched">
+                  Las contraseñas deben ser iguales
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group row mb-0">
+              <div class="col-md-6 offset-md-4">
+                <button type="submit" class="btn btn-warning" [disabled]="RegistroForm.invalid">
+                  {{ 'Register' }}
+                </button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+      <br>
+      <!--Mensaje creedenciales incorrectas-->
+      <div class="alert alert-danger bi bi-x" *ngIf="errorMessage">
+        {{errorMessage}}
+      </div>
+    </div>
+  </div>
+</div>

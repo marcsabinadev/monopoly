@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg custom-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Monopoly</a>
+    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" aria-controls="navbarColor01"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01" [ngbCollapse]="isCollapsed">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item" *ngIf="!isAuthenticated">
+          <a class="nav-link" routerLink="/login">{{ 'Login' }}</a>
+        </li>
+        <li class="nav-item" *ngIf="!isAuthenticated">
+          <a class="nav-link" routerLink="/registro">{{ 'Registro' }}</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated">
+          <a class="nav-link" routerLink="/como_jugar">¿Como jugar?</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated">
+          <a class="nav-link" routerLink="/integrantes_grupo">Integrantes</a>
+        </li>
+        <div class="dropdown" *ngIf="isAuthenticated">
+          <button class="btn btn-secondary dropdown-toggle bi bi-person-circle" type="button" id="dropdownMenuButton1"
+            (click)="isUserDropdownOpen = !isUserDropdownOpen" aria-expanded="false">
+            {{ user.name }}
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" [ngbCollapse]="!isUserDropdownOpen">
+            <li><a class="dropdown-item" (click)="logout()">{{ 'Logout' }}</a></li>
+          </ul>
+        </div>
+        <li class="nav-item" *ngIf="isAuthenticated">
+          <a class="nav-link" routerLink="/cartasEspeciales">Cartas especiales</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated">
+          <a class="nav-link" routerLink="/casillas">Casillas</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated">
+          <a class="nav-link" routerLink="/clasificacion">Clasificación</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated">
+          <a class="nav-link" routerLink="/participantes">Participantes</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ---------------------------------------------- -->
+<router-outlet></router-outlet>

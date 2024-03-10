@@ -1,0 +1,46 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="display-4 bi bi-person-fill-gear"> Modificar participante</h2>
+      <hr>
+    </div>
+  </div>
+  <form [formGroup]="modificarParticipante" (ngSubmit)="submit(modificarParticipante.value, participanteId)">
+    <div class="form-group">
+      <legend class="mt-4">Nombre del participante* :</legend>
+      <input type="text" class="form-control" formControlName="nomUsuario">
+
+      <!-- Mostrar mensaje de error si es necesario -->
+      <small class="form-text text-muted bi bi-info-circle"
+        *ngIf="modificarParticipante.get('nomUsuario')?.errors?.['required'] && modificarParticipante.get('nomUsuario')?.touched">
+         Campo obligatorio.
+      </small>
+
+      <small class="form-text text-muted bi bi-info-circle"
+        *ngIf="modificarParticipante.get('nomUsuario')?.errors?.['pattern'] && modificarParticipante.get('nomUsuario')?.touched">
+         Solo puede contener letras y números.
+      </small>
+
+      <small class="form-text text-muted bi bi-info-circle"
+        *ngIf="modificarParticipante.get('nomUsuario')?.errors?.['minlength'] && modificarParticipante.get('nomUsuario')?.touched">
+         Debe haber un mínimo de 3 caracteres.
+      </small>
+
+      <small class="form-text text-muted bi bi-info-circle"
+        *ngIf="modificarParticipante.get('nomUsuario')?.errors?.['maxlength'] && modificarParticipante.get('nomUsuario')?.touched">
+         Debe haber un máximo de 20 caracteres.
+      </small>
+    </div>
+<br>
+    <!-- Mostrar el mensaje de éxito -->
+    <div class="alert alert-success bi bi-check-lg" *ngIf="mostrarMensaje">
+       Participante modificado correctamente
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary" [disabled]="modificarParticipante.invalid">
+      Modificar Participante
+    </button>&nbsp;
+
+    <button type="submit" class="btn btn-danger" routerLink="/participantes">Cancelar</button>
+  </form>
+</div>

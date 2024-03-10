@@ -1,0 +1,27 @@
+<!-- @authors Julia Prieto, Marc Sabina, Alejandra Paz, Angel Rivera
+Estructura HTML,
+Tabla con los datos de las cartas existentes en la base de datos -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="display-4 bi bi-tag-fill"> Detalles de la Casilla</h2>
+      <hr>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Tipo de casilla</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let casilla of casillas">
+        <td>{{ casilla.nombre }}</td>
+        <td>{{ casilla.tipoCasilla }}</td>
+        <td>{{ casilla.precio }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,7 @@
+.form-center {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #070a16;
+    padding: 20px;
+    border-radius: 8px;
+}

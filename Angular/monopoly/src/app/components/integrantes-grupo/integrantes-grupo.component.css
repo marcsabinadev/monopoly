@@ -1,0 +1,118 @@
+/* h2 {
+    font-family: 'Monopoly Bold';
+} */
+
+.form-center {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #070a16;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Balthazar|Nunito:300');
+
+body {
+  background: #eceff1;
+}
+
+h1 {
+	text-align: center;
+	font-family: 'Balthazar', serif;
+	letter-spacing: 2px;
+}
+p {
+  margin: 0px 0;
+}
+
+.table {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  margin: 0;
+}
+
+.card {
+  width: 340px;
+  max-height: 460px;
+  border: 1px solid #222;
+  box-sizing: border-box;
+  padding: 5px;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 300;
+  box-shadow: 0 0 8px rgba(43,47,62,.1);
+  transition: 1s all ease;
+}
+
+.property {
+  border: 2px solid #222;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 5px;
+  font-size: 28px;
+  letter-spacing: 1px;
+  font-family: 'Balthazar', serif;
+  font-weight: 400;
+  cursor: pointer;
+  outline: none;
+  transition: 1s all ease;
+}
+
+.yellow { background: #f8f218; }
+.lightblue { background: #c1dced; }
+
+
+.eyebrow {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 4px;
+  margin-bottom: 5px;
+}
+
+summary {
+	list-style: none;
+}
+
+summary::-webkit-details-marker,
+summary::marker {
+  display: none;
+}
+
+.rent {
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.priceTable {
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+
+}
+
+.priceTable .qty,
+.priceTable .price {
+  width: 50%;
+}
+
+.priceTable .qty {
+  text-transform: capitalize;
+  text-align: left;
+}
+
+.priceTable .price {
+  text-align: right;
+}
+
+.hotel {
+  margin-top: 5px;
+}
+
+.disclaimer {
+  font-size: 10px;
+  margin: 10px 0;
+}

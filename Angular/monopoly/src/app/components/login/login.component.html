@@ -1,0 +1,60 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">Login</div>
+
+        <div class="card-body">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+            <!--Campo correo electrónico-->
+            <div class="form-group row mb-3">
+              <label for="email" class="col-md-4 col-form-label text-md-right">Correo electrónico</label>
+              <div class="col-md-6">
+                <input id="email" type="email" class="form-control" formControlName="email" required autofocus>
+                <!--Mensajes de error -->
+                <small class="form-text text-muted bi bi-info-circle"
+                  *ngIf="loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched">
+                   Campo obligatorio.
+                </small>
+                <small class="form-text text-muted bi bi-info-circle" *ngIf="loginForm.get('email')?.errors?.['pattern'] && loginForm.get('email')?.touched">
+                   El formato del correo electrónico no es válido.
+                </small>
+              </div>
+            </div>
+
+            <!----------------------------------------------------------------------------------------------->
+
+            <!--Campo contraseña -->
+            <div class="form-group row mb-3">
+              <label for="password" class="col-md-4 col-form-label text-md-right">Contraseña</label>
+              <div class="col-md-6">
+                <input id="password" type="password" class="form-control" formControlName="password" required>
+                <!--Mensajes de error -->
+                <small class="form-text text-muted bi bi-info-circle"
+                  *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched">
+                   Campo obligatorio.
+                </small>
+              </div>
+            </div>
+
+            <!----------------------------------------------------------------------------------------------->
+
+            <div class="form-group row mb-0">
+              <div class="col-md-8 offset-md-4">
+                <button type="submit" class="btn btn-warning" [disabled]="loginForm.invalid">
+                  Login
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <br>
+      <!--Mensaje creedenciales incorrectas-->
+      <div class="alert alert-danger bi bi-x" *ngIf="errorMessage">
+         {{errorMessage}}
+      </div>
+    </div>
+  </div>
+</div>
