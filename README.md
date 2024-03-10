@@ -32,7 +32,7 @@ Para ejecutar el proyecto de *Laravel*.
 * Bootstrap - Framework de estilos que hemos utilizado para la web.
 
 ## Desarrolladores 💻
-* **Alejandra Paz**
+* **Alejandra Paz** [AlejandraTech](https://github.com/AlejandraTech)
 * **Angel Rivera** - [DarkAng10](https://github.com/DarkAng10)
 * **Julia Prieto** - [Julia-1997]( https://github.com/Julia-1997)
 * **Marc Sabina** - [marcsabinadev](https://github.com/marcsabinadev)
